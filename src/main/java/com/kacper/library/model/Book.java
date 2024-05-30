@@ -1,9 +1,6 @@
 package com.kacper.library.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book
@@ -16,16 +13,20 @@ public class Book
 
     private String author;
 
+    @ManyToOne
+    private Library library;
+
     public Book() {
 
     }
-    public Book(Integer id, String title, String author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
+
+    public Library getLibrary() {
+        return library;
     }
 
-
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
 
     public Integer getId() {
         return id;

@@ -2,6 +2,7 @@ package com.kacper.library.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,17 +14,17 @@ public class Library
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL)
     @Column(nullable = true)
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
     public Library() {
 
     }
 
-    public Library(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+    public void addBook(Book book) {
+        book.setLibrary(this);
+        books.add(book);
     }
 
     public Integer getId() {
