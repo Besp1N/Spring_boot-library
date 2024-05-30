@@ -1,5 +1,6 @@
 package com.kacper.library.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,8 +15,7 @@ public class Library
 
     private String name;
 
-    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL)
-    @Column(nullable = true)
+    @OneToMany(mappedBy = "library")
     private List<Book> books = new ArrayList<>();
 
     public Library() {
@@ -23,7 +23,6 @@ public class Library
     }
 
     public void addBook(Book book) {
-        book.setLibrary(this);
         books.add(book);
     }
 

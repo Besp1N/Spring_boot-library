@@ -1,5 +1,6 @@
 package com.kacper.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,8 @@ public class Book
     private String author;
 
     @ManyToOne
+    @JoinColumn(name = "library_id")
+    @JsonIgnore
     private Library library;
 
     public Book() {
