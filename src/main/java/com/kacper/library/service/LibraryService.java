@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class LibraryService
@@ -27,6 +28,6 @@ public class LibraryService
         Library library = new Library();
         library.setName(name);
         libraryRepository.save(library);
-        return new ResponseEntity<>("Saved" ,HttpStatus.CREATED);
+        return new ResponseEntity<>("saved" ,HttpStatus.CREATED);
     }
 }
